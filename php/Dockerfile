@@ -22,4 +22,5 @@ RUN chmod +x /entrypoint.sh
 VOLUME /var/www
 EXPOSE 80
 
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["php", "-S", "0.0.0.0:80"]
