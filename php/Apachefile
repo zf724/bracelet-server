@@ -19,7 +19,7 @@ RUN tar zxf /var/www/html/v${VERSION}.tar.gz \
 
 RUN set -xe \
     && ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/ \
-    && sed -i -e '/DocumentRoot /a\AllowOverride All' /etc/apache2/sites-enabled/000-default.conf
+    && sed -i -e '/AllowOverride None/s/None/All/' /etc/apache2/apache2.conf
 
 VOLUME /var/www/html
 EXPOSE 80
