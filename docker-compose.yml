@@ -1,0 +1,21 @@
+version: '3.0'
+services:
+  php:
+    build:
+      context:
+        https://raw.githubusercontent.com/zf724/bracelet-server/master/php/Dockerfile
+    volumes:
+      - /var/www
+    ports:
+      - "80"
+    links:
+      - mysql
+  mysql:
+    image:
+      mysql
+    volumes:
+      - /var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306"
