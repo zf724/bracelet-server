@@ -8,6 +8,7 @@ RUN docker-php-source extract \
 ENV VERSION 1.0
 
 ADD https://github.com/zf724/bracelet-web/archive/v${VERSION}.tar.gz /var/www/html
+ADD https://raw.githubusercontent.com/zf724/bracelet-web/master/.htaccess /var/www/html
 
 WORKDIR /var/www/html
 RUN tar zxf /var/www/html/v${VERSION}.tar.gz \
