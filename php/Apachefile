@@ -17,10 +17,9 @@ RUN tar zxf /var/www/html/v${VERSION}.tar.gz \
     && chown -R nobody:nogroup /var/www/html \
     && chmod -R 777 firmware
 
-#ADD https://raw.githubusercontent.com/zf724/bracelet-server/master/php/entrypoint.sh /entrypoint.sh
-#RUN chmod +x /entrypoint.sh
+RUN set -xe \
+    && ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/ \
+    && sed -i -e '/DocumentRoot /a\AllowOverride All' /etc/apache2/sites-enabled/000-default.conf
 
 VOLUME /var/www/html
 EXPOSE 80
-
-#ENTRYPOINT ["/entrypoint.sh"]
