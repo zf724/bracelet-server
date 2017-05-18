@@ -8,15 +8,16 @@ RUN docker-php-source extract \
 ENV VERSION 1.0
 
 ADD https://github.com/zf724/bracelet-web/archive/v${VERSION}.tar.gz /var/www/html
-ADD https://raw.githubusercontent.com/zf724/bracelet-web/master/.htaccess /var/www/html
 
 WORKDIR /var/www/html
 RUN tar zxf /var/www/html/v${VERSION}.tar.gz \
     && rm v${VERSION}.tar.gz \
     && mv bracelet-web-${VERSION}/* . \
     && rm bracelet-web-${VERSION} -rf \
+    && mv htaccess .htaccess \
     && chown -R nobody:nogroup /var/www/html \
-    && chmod -R 777 firmware
+    && chmod -R 777 firmware \
+    && chmod 444 .htaccess
 
 RUN set -xe \
     && ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/ \
