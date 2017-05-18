@@ -12,7 +12,7 @@ ADD https://github.com/zf724/bracelet-web/archive/v${VERSION}.tar.gz /var/www/ht
 WORKDIR /var/www/html
 RUN tar zxf /var/www/html/v${VERSION}.tar.gz \
     && rm v${VERSION}.tar.gz \
-    && mv bracelet-web-${VERSION}/* bracelet-web-${VERSION}/.[^.]* . \
+    && mv bracelet-web-${VERSION}/* bracelet-web-${VERSION}/.htaccess . \
     && rm bracelet-web-${VERSION} -rf \
     && chown -R nobody:nogroup /var/www/html \
     && chmod -R 777 firmware \
