@@ -3,7 +3,7 @@ services:
   php:
     build:
       context:
-        https://raw.githubusercontent.com/zf724/bracelet-server/master/php/Dockerfile
+        https://raw.githubusercontent.com/zf724/docker-bracele/master/php/Dockerfile
     volumes:
       - /var/www
     ports:
